@@ -1,0 +1,61 @@
+
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.time-display {
+  font-size: 3rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #5f76f9, #00e0ff);
+  -webkit-background-clip: text;
+  background-clip:text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 32px;
+}
+
+button {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  margin: 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: linear-gradient(to right, #5f76f9, #00e0ff);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(95, 118, 249, 0.3);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(95, 118, 249, 0.4);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 10px rgba(95, 118, 249, 0.2);
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 30px 20px;
+  }
+
+  .time-display {
+    font-size: 2.2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

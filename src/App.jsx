@@ -1,46 +1,37 @@
-import { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [secs, setSecs] = useState(0);
-  const [play, setPlay] = useState(false);
-
-  useEffect(() => {
-    if (play) {
-      const id = setInterval(() => {
-        setSecs((x) => x + 1);
-      }, 1000);
-      return () => clearInterval(id);
-    }
-  }, [play]);
-
-  const formatTime = (s) => {
-    const hrs = Math.floor(s / 3600) % 24;
-    const mins = Math.floor(s / 60) % 60;
-    const secs = s % 60;
-    return (
-      hrs.toString().padStart(2, "0") +
-      ":" +
-      mins.toString().padStart(2, "0") +
-      ":" +
-      secs.toString().padStart(2, "0")
-    );
-  };
-
+  const Stopwatch = React.lazy(() => import("./stopwatch"));
+  const Home = React.lazy(() => import("./home"));
+  const ControlTechniques = React.lazy(() => import("./ControlTechniques"));
   return (
-    <div className="App">
-      <h1>Stopwatch</h1>
-      <div className="time-display">{formatTime(secs)}</div>
-      <button onClick={() => setPlay(!play)}>{play ? "Stop" : "Start"}</button>
-      <button
-        onClick={() => {
-          setPlay(false);
-          setSecs(0);
-        }}
-      >
-        Reset
-      </button>
-    </div>
+    <BrowserRouter>
+      <Suspense fallback={<div>loading ..... home</div>}>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route
+              path="/stopwatch"
+              element={
+                <Suspense fallback={<div>laoding ... blyat</div>}>
+                  <Stopwatch />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/control techniques"
+              element={
+                <Suspense fallback={<div>laoding ... blyat</div>}>
+                  <ControlTechniques />
+                </Suspense>
+              }
+            />
+            <Route path="*" element={<div>not found blyat</div>} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
