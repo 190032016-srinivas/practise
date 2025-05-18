@@ -69,11 +69,11 @@ export default function ControlTechniques() {
         }}
       />
       <div>debounced 0.5 sec input</div>
-      <input className="input" type="text" value={debouncedText} disabled />
+      <input className="input" type="text" value={debouncedText} />
       <div>rate limited 5 updates per 3 sec input</div>
-      <input className="input" type="text" value={rateLimitedText} disabled />
+      <input className="input" type="text" value={rateLimitedText} />
       <div>throttled input time in btwn 0.5 sec</div>
-      <input className="input" type="text" value={throttledText} disabled />
+      <input className="input" type="text" value={throttledText} />
     </div>
   );
 }
